@@ -1,9 +1,9 @@
 #	Jogo do Labirinto
 
 ##	Informações técnicas
-Autor: Renato R R Araújo <renatorraraujo@gmail.com>
-Criação: 20/08/2024
-Linguagem: Portugol
+Autor: Renato R R Araújo <renatorraraujo@gmail.com>	\
+Criação: 20/08/2024					\
+Linguagem: Portugol					\
 Arquitetura: Monólito
 
 ##	Executando o jogo
