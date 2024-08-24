@@ -187,7 +187,6 @@ programa {
 					inteiro posicao_x = inicio_x
 					inteiro posicao_y = inicio_y
 				}
-				}
 			} se (input == "d") {
 				se (mapa[posicao_y][posicao_x + 1] == espaco ou mapa[posicao_y][posicao_x + 1] == tesouro) {
 					posicao_x++
