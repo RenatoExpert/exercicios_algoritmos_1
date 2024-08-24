@@ -105,7 +105,6 @@ programa {
 		//  Abrindo os espaços vazios para a trilha
 		escreva("Gerando partida... 5/6 \n")
 		para (inteiro i = 0; i < passos; i++) {
-			escreva(i)
 			mapa[caminho[i][0]][caminho[i][1]] = espaco
 		}
 
