@@ -20,10 +20,10 @@ programa {
 	cadeia exibicao_personagem = "シ"
 
 	funcao inicio() {
-		escreva("Iniciando...")
+		escreva("Iniciando... \n")
 
 		//	Desenhando mapa com apenas paredes
-		escreva("Gerando partida... 1/5")
+		escreva("Gerando partida... 1/5 \n")
 		inteiro mapa[5][5]
 		para(inteiro i = 0; i < 5; i++) {
 			para(inteiro j = 0; j < 5; j++) {
@@ -32,14 +32,14 @@ programa {
 		}
 
 		//	Sorteando uma posição para o tesouro
-		escreva("Gerando partida... 2/5")
+		escreva("Gerando partida... 2/5 \n")
 		inteiro tesouro_x = Util.sorteia (0, 4)
 		inteiro tesouro_y = Util.sorteia (0, 4)
 		mapa[tesouro_y][tesouro_x] = tesouro
 
 		//	Sorteando posicao inicial
 		//	Esse loop evita que o tesouro e o personagem sejam sorteados muito próximos um do outro
-		escreva("Gerando partida... 3/5")
+		escreva("Gerando partida... 3/5 \n")
 		inteiro inicio_x = tesouro_x
 		inteiro inicio_y = tesouro_y
 		inteiro proximidade_minima = 2
@@ -51,7 +51,7 @@ programa {
 		}
 
 		//	Simulando trilha
-		escreva("Gerando partida... 4/5")
+		escreva("Gerando partida... 4/5 \n")
 		logico trilha_pronta = falso
 		inteiro passos
 		inteiro caminho[25][2]
@@ -99,14 +99,14 @@ programa {
 		}
 
 		//  Abrindo os espaços vazios para a trilha
-		escreva("Gerando partida... 5/5")
+		escreva("Gerando partida... 5/5 \n")
 		para (inteiro i = 0; i < passos; i++) {
 			escreva(i)
 			mapa[caminho[i][0]][caminho[i][1]] = espaco
 		}
 
 		//  Jogando
-		escreva("Hora de jogar!")
+		escreva("Hora de jogar! \n")
 		inteiro posicao_x = inicio_x
 		inteiro posicao_y = inicio_y
 		enquanto (mapa[posicao_y][posicao_x] != tesouro) {
