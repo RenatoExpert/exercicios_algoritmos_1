@@ -161,6 +161,11 @@ programa {
 			//	Borda inferior
 			escreva("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
 
+			//	Instruções
+			escreva("Utilize W, A, S, D e Enter para movimentar o personagem \n")
+			escreva("Você precisa encontrar o tesouro perdido para vencer \n")
+			escreva("Tenha cuidado, pois existem armadilhas que te retornarão para o começo \n")
+
 			//	Lendo o comando do usuário
 			//	e utilizando os controles tradicionais WSAD de jogos
 			caracter input
