@@ -40,15 +40,16 @@ programa {
 		//	Sorteando posicao inicial
 		//	Esse loop evita que o tesouro e o personagem sejam sorteados muito próximos um do outro
 		escreva("Gerando partida... 3/5 \n")
-		inteiro inicio_x = tesouro_x
-		inteiro inicio_y = tesouro_y
+		inteiro inicio_x
+		inteiro inicio_y
 		inteiro proximidade_minima = 2
-		logico teste_x = Matematica.valor_absoluto(inicio_x - tesouro_x) < proximidade_minima
-		logico teste_y = Matematica.valor_absoluto(inicio_y - tesouro_y) < proximidade_minima
-		escreva(teste_x, teste_y)
+		logico teste_x = verdadeiro
+		logico teste_y = verdadeiro
 		enquanto (teste_x ou teste_y) {
 			inicio_x = Util.sorteia (0, 4)
 			inicio_y = Util.sorteia (0, 4)
+			teste_x = Matematica.valor_absoluto(inicio_x - tesouro_x) < proximidade_minima
+			teste_y = Matematica.valor_absoluto(inicio_y - tesouro_y) < proximidade_minima
 		}
 
 		//	Simulando trilha
