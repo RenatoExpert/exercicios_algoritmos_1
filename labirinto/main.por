@@ -9,6 +9,7 @@ programa {
 	inteiro espaco = 0
 	inteiro parede = 1
 	inteiro tesouro = 2
+	inteiro armadilha = 3
 
 	//	Definindo "sprites"
 	//	cadeia exibicao_tesouro = "ロ"
@@ -17,13 +18,14 @@ programa {
 	cadeia exibicao_espaco = "  "
 	cadeia exibicao_parede = "キ"
 	cadeia exibicao_tesouro = exibicao_espaco
+	cadeia exibicao_armadilha = exibicao_espaco
 	cadeia exibicao_personagem = "シ"
 
 	funcao inicio() {
 		escreva("Iniciando... \n")
 
 		//	Desenhando mapa com apenas paredes
-		escreva("Gerando partida... 1/5 \n")
+		escreva("Gerando partida... 1/6 \n")
 		inteiro mapa[5][5]
 		para(inteiro i = 0; i < 5; i++) {
 			para(inteiro j = 0; j < 5; j++) {
@@ -32,14 +34,14 @@ programa {
 		}
 
 		//	Sorteando uma posição para o tesouro
-		escreva("Gerando partida... 2/5 \n")
+		escreva("Gerando partida... 2/6 \n")
 		inteiro tesouro_x = Util.sorteia (0, 4)
 		inteiro tesouro_y = Util.sorteia (0, 4)
 		mapa[tesouro_y][tesouro_x] = tesouro
 
 		//	Sorteando posicao inicial
 		//	Esse loop evita que o tesouro e o personagem sejam sorteados muito próximos um do outro
-		escreva("Gerando partida... 3/5 \n")
+		escreva("Gerando partida... 3/6 \n")
 		inteiro inicio_x
 		inteiro inicio_y
 		inteiro proximidade_minima = 2
@@ -53,7 +55,7 @@ programa {
 		}
 
 		//	Simulando trilha
-		escreva("Gerando partida... 4/5 \n")
+		escreva("Gerando partida... 4/6 \n")
 		logico trilha_pronta = falso
 		inteiro passos
 		inteiro caminho[25][2]
@@ -101,13 +103,26 @@ programa {
 		}
 
 		//  Abrindo os espaços vazios para a trilha
-		escreva("Gerando partida... 5/5 \n")
+		escreva("Gerando partida... 5/6 \n")
 		para (inteiro i = 0; i < passos; i++) {
 			escreva(i)
 			mapa[caminho[i][0]][caminho[i][1]] = espaco
 		}
 
-		//  Jogando
+		//	Gerando armadilhas
+		escreva("Gerando partida... 6/6 \n")
+		inteiro armadilhas_presentes = 0
+		inteiro armadilhas_desejadas = 5
+		enquanto (armadilhas_presentes < armadilhas_desejadas) {
+			inteiro sorteia_x = Util.sorteia (0, 4)
+			inteiro sorteia_y = Util.sorteia (0, 4)
+			se (mapa[sorteia_y][sorteia_x] == parede) {
+				mapa[sorteia_y][sorteia_x] = armadilha
+				armadilhas_presentes++
+			}
+		}
+
+		//	Jogando
 		escreva("Hora de jogar! \n")
 		inteiro posicao_x = inicio_x
 		inteiro posicao_y = inicio_y
@@ -132,6 +147,8 @@ programa {
 							char = exibicao_parede
 						} se (valor == tesouro) {
 							char = exibicao_tesouro
+						} se (valor == armadilha) {
+							char = exibicao_armadilha
 						}
 					}
 					//	Concatenando o sprite à linha
@@ -153,18 +170,31 @@ programa {
 				//	Essa lógica evita sair do mapa ou colidir com uma parede
 				se (mapa[posicao_y + 1][posicao_x] == espaco ou mapa[posicao_y + 1][posicao_x] == tesouro) {
 					posicao_y++
+				} se (mapa[posicao_y + 1][posicao_x] == armadilha) {
+					inteiro posicao_x = inicio_x
+					inteiro posicao_y = inicio_y
 				}
 			} se (input == "s") {
 				se (mapa[posicao_y - 1][posicao_x] == espaco ou mapa[posicao_y - 1][posicao_x] == tesouro) {
 					posicao_y--
+				} se (mapa[posicao_y - 1][posicao_x] == armadilha) {
+					inteiro posicao_x = inicio_x
+					inteiro posicao_y = inicio_y
 				}
 			} se (input == "a") {
 				se (mapa[posicao_y][posicao_x - 1] == espaco ou mapa[posicao_y][posicao_x - 1] == tesouro) {
 					posicao_x--
+				} se (mapa[posicao_y][posicao_x - 1] == armadilha) {
+					inteiro posicao_x = inicio_x
+					inteiro posicao_y = inicio_y
+				}
 				}
 			} se (input == "d") {
 				se (mapa[posicao_y][posicao_x + 1] == espaco ou mapa[posicao_y][posicao_x + 1] == tesouro) {
 					posicao_x++
+				} se (mapa[posicao_y][posicao_x + 1] == armadilha) {
+					inteiro posicao_x = inicio_x
+					inteiro posicao_y = inicio_y
 				}
 			}
 		}
