@@ -45,7 +45,7 @@ programa {
 		inteiro proximidade_minima = 2
 		logico teste_x = Matematica.valor_absoluto(inicio_x - tesouro_x) < proximidade_minima
 		logico teste_y = Matematica.valor_absoluto(inicio_y - tesouro_y) < proximidade_minima
-		escreva(teste_x, teste_y);
+		escreva(teste_x, teste_y)
 		enquanto (teste_x ou teste_y) {
 			inicio_x = Util.sorteia (0, 4)
 			inicio_y = Util.sorteia (0, 4)
