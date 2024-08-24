@@ -159,7 +159,7 @@ programa {
 				escreva(linha)
 			}
 			//	Borda inferior
-			escreva("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾")
+			escreva("‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ \n")
 
 			//	Instruções
 			escreva("Utilize W, A, S, D e Enter para movimentar o personagem \n")
