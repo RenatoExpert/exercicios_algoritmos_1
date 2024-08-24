@@ -125,7 +125,7 @@ programa {
 		escreva("Hora de jogar! \n")
 		inteiro posicao_x = inicio_x
 		inteiro posicao_y = inicio_y
-		enquanto (mapa[posicao_y][posicao_x] != tesouro) {
+		faca {
 			//	Criando linhas vazias para ter um efeito análogo a limpar a tela
 			para(inteiro s = 0; s < 50; s++) { escreva("\n") }
 			//	Borda superior do mapa
@@ -195,7 +195,7 @@ programa {
 					posicao_y = inicio_y
 				}
 			}
-		}
+		} enquanto (mapa[posicao_y][posicao_x] != tesouro)
 		escreva("Você ganhou! Seu prêmio: 0 reais")
 	}
 }
