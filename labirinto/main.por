@@ -170,29 +170,29 @@ programa {
 				se (mapa[posicao_y + 1][posicao_x] == espaco ou mapa[posicao_y + 1][posicao_x] == tesouro) {
 					posicao_y++
 				} se (mapa[posicao_y + 1][posicao_x] == armadilha) {
-					inteiro posicao_x = inicio_x
-					inteiro posicao_y = inicio_y
+					posicao_x = inicio_x
+					posicao_y = inicio_y
 				}
 			} se (input == "s") {
 				se (mapa[posicao_y - 1][posicao_x] == espaco ou mapa[posicao_y - 1][posicao_x] == tesouro) {
 					posicao_y--
 				} se (mapa[posicao_y - 1][posicao_x] == armadilha) {
-					inteiro posicao_x = inicio_x
-					inteiro posicao_y = inicio_y
+					posicao_x = inicio_x
+					posicao_y = inicio_y
 				}
 			} se (input == "a") {
 				se (mapa[posicao_y][posicao_x - 1] == espaco ou mapa[posicao_y][posicao_x - 1] == tesouro) {
 					posicao_x--
 				} se (mapa[posicao_y][posicao_x - 1] == armadilha) {
-					inteiro posicao_x = inicio_x
-					inteiro posicao_y = inicio_y
+					posicao_x = inicio_x
+					posicao_y = inicio_y
 				}
 			} se (input == "d") {
 				se (mapa[posicao_y][posicao_x + 1] == espaco ou mapa[posicao_y][posicao_x + 1] == tesouro) {
 					posicao_x++
 				} se (mapa[posicao_y][posicao_x + 1] == armadilha) {
-					inteiro posicao_x = inicio_x
-					inteiro posicao_y = inicio_y
+					posicao_x = inicio_x
+					posicao_y = inicio_y
 				}
 			}
 		}
