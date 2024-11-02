@@ -104,28 +104,32 @@ void autotest () {
 	printf("Automatic Tests completed\n");
 }
 
-bool ask_bool (char question[]) {
+bool ask_bool (char *question) {
 	bool boolAnswer;
 	bool goodAnswer = false;
-	while(!goodAnswer) {
+	printf("1");
+	while (!goodAnswer) {
+		printf("2");
 		char charAnswer[1];
-		printf("%s [y/n] ", question);
-		scanf("%c", charAnswer);
+		printf("%s [y/n] \n", question);
+		scanf(" %s", &charAnswer);
 		goodAnswer = strcmp(charAnswer, "y") || strcmp(charAnswer, "n");
 		boolAnswer = strcmp(charAnswer, "y");
+		printf("3");
 	}
+	printf("4");
 	return boolAnswer;
 }
 
 void play_interactive () {
 	struct Customer client;
-	printf("What is your name? ");
-	scanf("%s", client.name);
-	printf("What is your current income, per Month? ");
-	scanf("%d", client.incomePerMonth);
+	printf("What is your name?\n");
+	scanf(" %s", &client.name);
+	printf("What is your current income, per Month?\n");
+	scanf(" %d", client.incomePerMonth);
 	client.isGoodPayer = ask_bool("Are you a good payer?");
 	client.hasStability = ask_bool("Do you have a good stability?");
-	struct Customer client = { name, incomePerMonth, isGoodPayer, hasStability };
+	printf("5");
 	/*
 	struct OrderRequest request = { requestedValue, entryValue, &client };
 	struct OrderResponse response = requestLoan(request);
