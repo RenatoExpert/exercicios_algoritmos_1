@@ -27,7 +27,8 @@ bool rule1 (struct LoanOrder order) {
 
 struct OrderResponse requestLoan (struct LoanOrder request) {
 	bool r1 = rule1(request);
-	bool response = r1;
+	bool approved = r1;
+	struct OrderResponse response = { request, approved };
 	return response;
 }
 
