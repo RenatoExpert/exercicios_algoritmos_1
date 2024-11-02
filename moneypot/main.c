@@ -30,8 +30,6 @@ bool rule1 (struct OrderRequest request) {
 struct OrderResponse requestLoan (struct OrderRequest request) {
 	bool r1 = rule1(request);
 	struct Customer *customer = request.requester;
-	printf("customer.incomePerMonth %d", customer -> incomePerMonth);
-	printf("request.requestedValue %d", request.requestedValue);
 	bool approved = r1;
 	struct OrderResponse response = { &request, approved };
 	return response;
@@ -44,12 +42,11 @@ void test1 () {
 	bool isGoodPayer = true;
 	bool hasStability = true;
 	struct Customer client1 = { name, incomePerMonth, isGoodPayer, hasStability };
-	printf("income %d \n", client1.incomePerMonth);
 	int requestedValue = 30000;
 	int entryValue = 3000;
 	struct OrderRequest loan1 = { requestedValue, entryValue, &client1 };
 	struct OrderResponse response = requestLoan(loan1);
-	//assert(response.approved);
+	assert(response.approved);
 	printf("OK \n");
 }
 
