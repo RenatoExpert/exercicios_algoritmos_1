@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
+#include <string.h>
 
 struct Customer {
 	char *name;
@@ -103,11 +104,45 @@ void autotest () {
 	printf("Automatic Tests completed\n");
 }
 
+bool ask_bool (char question[]) {
+	bool boolAnswer;
+	bool goodAnswer = false;
+	while(!goodAnswer) {
+		char charAnswer[1];
+		printf("%s [y/n] ", question);
+		scanf("%c", charAnswer);
+		goodAnswer = strcmp(charAnswer, "y") || strcmp(charAnswer, "n");
+		boolAnswer = strcmp(charAnswer, "y");
+	}
+	return boolAnswer;
+}
+
 void play_interactive () {
+	struct Customer client;
+	printf("What is your name? ");
+	scanf("%s", client.name);
+	printf("What is your current income, per Month? ");
+	scanf("%d", client.incomePerMonth);
+	client.isGoodPayer = ask_bool("Are you a good payer?");
+	client.hasStability = ask_bool("Do you have a good stability?");
+	struct Customer client = { name, incomePerMonth, isGoodPayer, hasStability };
+	/*
+	struct OrderRequest request = { requestedValue, entryValue, &client };
+	struct OrderResponse response = requestLoan(request);
+	char approvationString = response.approved ? "Approved" : "Denied";
+	printf("Your loan request were %c");
+	*/
 }
 
 void main (int argc, char *argv[]) {
-	autotest();
+	bool autotest_mode = true;
+	bool interactive_mode = true;
+	if (autotest_mode) {
+		autotest();
+	}
+	if (interactive_mode) {
+		play_interactive();
+	}
 	exit(EXIT_SUCCESS);
 }
 
