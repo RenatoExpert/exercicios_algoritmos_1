@@ -50,9 +50,25 @@ void test1 () {
 	printf("OK \n");
 }
 
+void test2 () {
+	printf("Running test2... \t");
+	char name[30] = "Jenipher";
+	int incomePerMonth = 1000;
+	bool isGoodPayer = true;
+	bool hasStability = true;
+	struct Customer client1 = { name, incomePerMonth, isGoodPayer, hasStability };
+	int requestedValue = 30000;
+	int entryValue = 3000;
+	struct OrderRequest loan1 = { requestedValue, entryValue, &client1 };
+	struct OrderResponse response = requestLoan(loan1);
+	assert(response.approved);
+	printf("OK \n");
+}
+
 void autotest () {
 	printf("Running automatic tests...\n");
 	test1();
+	test2();
 	printf("Automatic Tests completed\n");
 }
 
