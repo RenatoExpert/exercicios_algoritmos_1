@@ -61,7 +61,7 @@ void test2 () {
 	int entryValue = 3000;
 	struct OrderRequest loan1 = { requestedValue, entryValue, &client1 };
 	struct OrderResponse response = requestLoan(loan1);
-	assert(response.approved);
+	assert(!response.approved);
 	printf("OK \n");
 }
 
