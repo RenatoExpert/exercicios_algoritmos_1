@@ -39,7 +39,7 @@ void test1 () {
 	int incomePerMonth = 300000;
 	bool isGoodPayer = true;
 	bool hasStability = true;
-	struct Customer client1 = { name, incomePerMonth, isGoodPayer, hasStability };
+	struct Customer client1 = { *name, incomePerMonth, isGoodPayer, hasStability };
 	int requestedValue = 30000;
 	int entryValue = 3000;
 	struct LoanOrder loan1 = { requestedValue, entryValue, client1 };
