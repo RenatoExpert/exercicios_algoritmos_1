@@ -81,11 +81,18 @@ void test2 () {
 	bool isGoodPayer = true;
 	bool hasStability = true;
 	struct Customer client1 = { name, incomePerMonth, isGoodPayer, hasStability };
-	int requestedValue = 30000;
-	int entryValue = 3000;
-	struct OrderRequest loan1 = { requestedValue, entryValue, &client1 };
-	struct OrderResponse response = requestLoan(loan1);
-	assert(!response.approved);
+	//	Subtest 1
+	int requestedValue1 = 30000;
+	int entryValue1 = 3000;
+	struct OrderRequest loan1 = { requestedValue1, entryValue1, &client1 };
+	struct OrderResponse response1 = requestLoan(loan1);
+	assert(!response1.approved);
+	//	Subtest 2
+	int requestedValue2 = 30;
+	int entryValue2 = 5;
+	struct OrderRequest loan2 = { requestedValue2, entryValue2, &client1 };
+	struct OrderResponse response2 = requestLoan(loan2);
+	assert(response2.approved);
 	printf("OK \n");
 }
 
