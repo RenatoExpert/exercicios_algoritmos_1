@@ -7,18 +7,18 @@ struct Customer {
 	int incomePerMonth;
 	bool isGoodPayer;
 	bool hasStability;
-}
+};
 
 struct LoanOrder {
 	int requestedValue;
 	int entryValue;
 	struct Customer requester;
-}
+};
 
 struct OrderResponse {
 	struct LoanOrder request;
 	bool approved;
-}
+};
 
 bool rule1 (struct LoanOrder order) {
 	int tertia = order.requester.incomePerMonth * 30 / 100;
