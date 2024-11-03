@@ -20,25 +20,29 @@ float calcular_media (float media_a, float media_b) {
 
 void gerarAluno (struct Aluno * pointer, char *nome, float media_a, float media_b) {
 	float media_geral = calcular_media(media_a, media_b);
-	float classificacao;
+	float classificacao = 0;
 	struct Aluno aluno = { nome, media_a, media_b, media_geral, classificacao };
 	*pointer = aluno;
 }
 
-void classificarAlunos(struct Aluno * alunos) {
+void classificarAlunos(struct Aluno * alunos, int howManyStudents) {
 	for (int position = 1; position <= sizeof(*alunos); position++) {
 		int thisTurnBestGuy;
 		int thisTurnBestScore = 0;
-		for (int aluno_index = 0; aluno_index < sizeof(*alunos); aluno_index++) {
+		for (int aluno_index = 0; aluno_index < howManyStudents; aluno_index++) {
 			struct Aluno aluno = alunos[aluno_index];
+			//printf(" aluno_index = %i ", aluno_index);
 			if (aluno.classificacao == 0) {
+				printf(" aluno.media_a = %f ", aluno.media_a);
 				if (aluno.media_geral > thisTurnBestScore) {
 					thisTurnBestGuy = aluno_index;
+					printf("<< thisTurnBestGuy = %i , aluno_index = %i >>",thisTurnBestGuy, aluno_index);
 				}
 			}
 		}
-		struct Aluno aluno = alunos[thisTurnBestGuy];
-		printf("aluno.classificacao = %i", aluno.classificacao);
+		//printf("thisTurnBestGuy = %i", thisTurnBestGuy);
+		//struct Aluno aluno = alunos[thisTurnBestGuy];
+		//printf("aluno.classificacao = %i", aluno.classificacao);
 		//aluno.classificacao = position;
 	}
 }
@@ -62,14 +66,15 @@ void test1 () {
 
 void test2 () {
 	printf("Test 2 - ");
-	struct Aluno * alunos = malloc(3 * sizeof(struct Aluno));
+	int howManyStudents = 3;
+	struct Aluno * alunos = malloc(howManyStudents * sizeof(struct Aluno));
 	struct Aluno aluno1 = alunos[0];
 	struct Aluno aluno2 = alunos[1];
 	struct Aluno aluno3 = alunos[2];
 	gerarAluno(&aluno1, "Roberto", 5.6, 4.2);
 	gerarAluno(&aluno2, "Erick", 5.2, 4.8);
 	gerarAluno(&aluno3, "Henrique", 3.2, 8.8);
-	classificarAlunos(alunos);
+	classificarAlunos(alunos, howManyStudents);
 	printf(" alunos[0] -> nome = %s ", aluno1.nome);
 	/*
 	assert(alunos[0].classificacao == 2);
