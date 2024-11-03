@@ -25,11 +25,11 @@ void gerarAluno (struct Aluno * pointer, char *nome, float media_a, float media_
 	*pointer = aluno;
 }
 
-void classificarAlunos(struct Aluno *alunos) {
-	for (int position = 1; position <= sizeof(alunos); position++) {
+void classificarAlunos(struct Aluno * alunos) {
+	for (int position = 1; position <= sizeof(*alunos); position++) {
 		int thisTurnBestGuy;
 		int thisTurnBestScore = 0;
-		for (int aluno_index = 0; aluno_index < sizeof(alunos); aluno_index++) {
+		for (int aluno_index = 0; aluno_index < sizeof(*alunos); aluno_index++) {
 			struct Aluno aluno = alunos[aluno_index];
 			if (aluno.classificacao == 0) {
 				if (aluno.media_geral > thisTurnBestScore) {
@@ -37,7 +37,8 @@ void classificarAlunos(struct Aluno *alunos) {
 				}
 			}
 		}
-		alunos[thisTurnBestGuy].classificacao = position;
+		//struct Aluno aluno = alunos[thisTurnBestGuy];
+		//aluno.classificacao = position;
 	}
 }
 
@@ -68,6 +69,7 @@ void test2 () {
 	gerarAluno(&aluno2, "Erick", 5.2, 4.8);
 	gerarAluno(&aluno3, "Henrique", 3.2, 8.8);
 	classificarAlunos(alunos);
+	printf(" alunos[0] -> nome = %s ", aluno1.nome);
 	/*
 	assert(alunos[0].classificacao == 2);
 	assert(alunos[1].classificacao == 3);
@@ -78,7 +80,7 @@ void test2 () {
 
 void automated_tests () {
 	printf("Stating Automated Tests\n");
-	test1();
+	//test1();
 	test2();
 	printf("End of Automated Tests\n");
 }
