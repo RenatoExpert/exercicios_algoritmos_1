@@ -108,11 +108,11 @@ bool ask_bool(const char *question) {
 	bool boolAnswer = false;
 	bool goodAnswer = false;
 	int attempts = 0;
+	// Limpeza de buffer de entrada para evitar problemas com quebras de linha
+	while (getchar() != '\n');
 	while (!goodAnswer && attempts < 4) {
 		printf("%s [y/n]: ", question);
 		char charAnswer = getchar();
-		// Limpeza de buffer de entrada para evitar problemas com quebras de linha
-		while (getchar() != '\n');
 		if (charAnswer == 'y' || charAnswer == 'Y') {
 			boolAnswer = true;
 			goodAnswer = true;
