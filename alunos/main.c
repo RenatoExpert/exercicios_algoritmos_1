@@ -67,9 +67,7 @@ void test2 () {
 	gerarAluno(&aluno1, "Roberto", 5.6, 4.2);
 	gerarAluno(&aluno2, "Erick", 5.2, 4.8);
 	gerarAluno(&aluno3, "Henrique", 3.2, 8.8);
-	/*
 	classificarAlunos(alunos);
-	*/
 	/*
 	assert(alunos[0].classificacao == 2);
 	assert(alunos[1].classificacao == 3);
