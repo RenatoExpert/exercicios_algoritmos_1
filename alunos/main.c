@@ -35,13 +35,14 @@ void classificarAlunos(struct Aluno *alunos) {
 	}
 }
 
-struct Aluno alunos[] criarAlunos () {
-	struct Aluno alunos[] = {
+struct Aluno *criarAlunos () {
+	struct Aluno *alunos = {
 		gerarAluno("Roberto", 5.6, 4.2),
 		gerarAluno("Erick", 5.2, 4.8),
 		gerarAluno("Henrique", 3.2, 8.8)
 	};
 	classificarAlunos(alunos);
+	return alunos;
 }
 
 void test1 () {
