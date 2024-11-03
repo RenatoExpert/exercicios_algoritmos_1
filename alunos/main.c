@@ -35,7 +35,7 @@ void classificarAlunos(struct Aluno *alunos) {
 	}
 }
 
-void criarAlunos () {
+struct Aluno alunos[] criarAlunos () {
 	struct Aluno alunos[] = {
 		gerarAluno("Roberto", 5.6, 4.2),
 		gerarAluno("Erick", 5.2, 4.8),
@@ -44,7 +44,18 @@ void criarAlunos () {
 	classificarAlunos(alunos);
 }
 
+void test1 () {
+	struct Aluno alunos[] = criarAlunos();
+	assert(alunos[0].classificacao == 3);
+	assert(alunos[1].classificacao == 2);
+	assert(alunos[2].classificacao == 1);
+}
+
+void automated_tests () {
+	teste1();
+}
+
 void main () {
-	criarAlunos();
+	automated_tests();
 }
 
