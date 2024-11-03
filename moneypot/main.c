@@ -104,38 +104,64 @@ void autotest () {
 	printf("Automatic Tests completed\n");
 }
 
-bool ask_bool (char *question) {
-	bool boolAnswer;
+bool ask_bool(const char *question) {
+	bool boolAnswer = false;
 	bool goodAnswer = false;
-	printf("1");
-	while (!goodAnswer) {
-		printf("2");
-		char charAnswer[1];
-		printf("%s [y/n] \n", question);
-		scanf(" %s", &charAnswer);
-		goodAnswer = strcmp(charAnswer, "y") || strcmp(charAnswer, "n");
-		boolAnswer = strcmp(charAnswer, "y");
-		printf("3");
+	int attempts = 0;
+	while (!goodAnswer && attempts < 4) {
+		printf("%s [y/n]: ", question);
+		char charAnswer = getchar();
+		// Limpeza de buffer de entrada para evitar problemas com quebras de linha
+		while (getchar() != '\n');
+		if (charAnswer == 'y' || charAnswer == 'Y') {
+			boolAnswer = true;
+			goodAnswer = true;
+		} else if (charAnswer == 'n' || charAnswer == 'N') {
+			boolAnswer = false;
+			goodAnswer = true;
+		} else {
+			printf("Invalid answer. Please respond with 'y' or 'n'.\n");
+			attempts++;
+		}
 	}
-	printf("4");
+	if (!goodAnswer) {
+		printf("Maximum attempts reached. Assuming 'no'.\n");
+	}
 	return boolAnswer;
 }
 
-void play_interactive () {
-	struct Customer client;
-	printf("What is your name?\n");
-	scanf(" %s", &client.name);
-	printf("What is your current income, per Month?\n");
-	scanf(" %d", client.incomePerMonth);
-	client.isGoodPayer = ask_bool("Are you a good payer?");
-	client.hasStability = ask_bool("Do you have a good stability?");
-	printf("5");
-	/*
-	struct OrderRequest request = { requestedValue, entryValue, &client };
-	struct OrderResponse response = requestLoan(request);
-	char approvationString = response.approved ? "Approved" : "Denied";
-	printf("Your loan request were %c");
-	*/
+void play_interactive() {
+    struct Customer client;
+
+    // Pergunta o nome do cliente
+    printf("What is your name? ");
+    scanf("%99s", client.name);  // Garantir que o nome não exceda o tamanho do buffer
+
+    // Pergunta se o cliente é bom pagador
+    client.isGoodPayer = ask_bool("Are you a good payer?");
+
+    // Pergunta se o cliente tem estabilidade financeira
+    client.hasStability = ask_bool("Do you have a good stability?");
+
+    // Pergunta sobre a renda mensal do cliente
+    printf("What is your current income per month? ");
+    scanf("%d", &client.incomePerMonth);  // Corrige a leitura de renda mensal
+
+    // Coleta valores para a solicitação do empréstimo
+    int requestedValue, entryValue;
+    printf("Enter the requested loan value: ");
+    scanf("%d", &requestedValue);
+
+    printf("Enter the entry value: ");
+    scanf("%d", &entryValue);
+
+    // Cria a solicitação de empréstimo e avalia a resposta
+    struct OrderRequest request = {requestedValue, entryValue, &client};
+    struct OrderResponse response = requestLoan(request);
+
+    // Exibe o resultado da solicitação
+    const char *approvationString = response.approved ? "Approved" : "Denied";
+    printf("Your loan request was %s.\n", approvationString);
 }
 
 void main (int argc, char *argv[]) {
