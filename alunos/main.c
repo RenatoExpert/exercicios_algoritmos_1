@@ -19,12 +19,29 @@ struct Aluno gerarAluno (char *nome, float media_a, float media_b) {
 	return aluno;
 }
 
+void classificarAlunos(struct Aluno *alunos) {
+	for (int position = 1; position <= sizeof(alunos); position++) {
+		int thisTurnBestGuy;
+		int thisTurnBestScore = 0;
+		for (int aluno_index = 0; aluno_index < sizeof(alunos); aluno_index++) {
+			struct Aluno aluno = alunos[aluno_index];
+			if (aluno.classificacao == 0) {
+				if (aluno.media_geral > thisTurnBestScore) {
+					thisTurnBestGuy = aluno_index;
+				}
+			}
+		}
+		alunos[thisTurnBestGuy].classificacao = position;
+	}
+}
+
 void criarAlunos () {
 	struct Aluno alunos[] = {
 		gerarAluno("Roberto", 5.6, 4.2),
 		gerarAluno("Erick", 5.2, 4.8),
 		gerarAluno("Henrique", 3.2, 8.8)
 	};
+	classificarAlunos(alunos);
 }
 
 void main () {
