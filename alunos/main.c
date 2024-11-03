@@ -37,7 +37,8 @@ void classificarAlunos(struct Aluno * alunos) {
 				}
 			}
 		}
-		//struct Aluno aluno = alunos[thisTurnBestGuy];
+		struct Aluno aluno = alunos[thisTurnBestGuy];
+		printf("aluno.classificacao = %i", aluno.classificacao);
 		//aluno.classificacao = position;
 	}
 }
