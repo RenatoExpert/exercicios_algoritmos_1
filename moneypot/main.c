@@ -71,14 +71,12 @@ void test1 () {
 	bool isGoodPayer = true;
 	bool hasStability = true;
 	struct Customer client1 = { name, incomePerMonth, isGoodPayer, hasStability };
-	
 	// Subteste 1: cliente atendendo a todas as condições de aprovação
 	int requestedValue1 = 30000;
 	int entryValue1 = 3500;
 	struct OrderRequest loan1 = { requestedValue1, entryValue1, &client1 };
 	struct OrderResponse response1 = requestLoan(loan1);
 	assert(response1.approved);  // Deve ser aprovado
-	
 	// Subteste 2: valor de entrada não atende a regra 4
 	int requestedValue2 = 30000;
 	int entryValue2 = 2500;
@@ -96,14 +94,12 @@ void test2 () {
 	bool isGoodPayer = true;
 	bool hasStability = true;
 	struct Customer client1 = { name, incomePerMonth, isGoodPayer, hasStability };
-	
 	// Subteste 1: valor solicitado excede a capacidade do cliente
 	int requestedValue1 = 30000;
 	int entryValue1 = 3000;
 	struct OrderRequest loan1 = { requestedValue1, entryValue1, &client1 };
 	struct OrderResponse response1 = requestLoan(loan1);
 	assert(!response1.approved);  // Deve ser negado
-	
 	// Subteste 2: valores dentro das regras estabelecidas
 	int requestedValue2 = 30;
 	int entryValue2 = 5;
@@ -126,13 +122,11 @@ bool ask_bool(const char *question) {
 	bool boolAnswer = false;
 	bool goodAnswer = false;
 	int attempts = 0;
-	
 	// Limpeza de buffer de entrada para evitar problemas com quebras de linha
 	while (getchar() != '\n');
 	while (!goodAnswer && attempts < 4) {
 		printf("%s [y/n]: ", question);
 		char charAnswer = getchar();
-		
 		if (charAnswer == 'y' || charAnswer == 'Y') {
 			boolAnswer = true;
 			goodAnswer = true;
