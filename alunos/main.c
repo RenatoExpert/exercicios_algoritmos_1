@@ -44,7 +44,8 @@ void classificarAlunos(struct Aluno *alunos) {
 void test1 () {
 	printf("Test 1 ...");
 	int num_alunos = 3;
-	struct Aluno * alunos = malloc(num_alunos * sizeof(struct Aluno));
+	//struct Aluno * alunos = malloc(num_alunos * sizeof(struct Aluno));
+	struct Aluno alunos[3];
 	alunos[0] = gerarAluno("Roberto", 5.6, 4.2);
 	alunos[1] = gerarAluno("Erick", 5.2, 4.8);
 	alunos[2] = gerarAluno("Henrique", 3.2, 8.8);
