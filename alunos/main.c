@@ -20,7 +20,11 @@ struct Aluno gerarAluno (char *nome, float media_a, float media_b) {
 }
 
 void criarAlunos () {
-	gerarAluno("Roberto", 5.6, 4.2);
+	struct Aluno alunos[] = {
+		gerarAluno("Roberto", 5.6, 4.2),
+		gerarAluno("Erick", 5.2, 4.8),
+		gerarAluno("Henrique", 3.2, 8.8)
+	};
 }
 
 void main () {
