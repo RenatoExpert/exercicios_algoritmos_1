@@ -41,26 +41,24 @@ void classificarAlunos(struct Aluno *alunos) {
 	}
 }
 
-struct Aluno *criarAlunos (int *num_alunos) {
-	*num_alunos = 3;
-	struct Aluno *alunos = malloc(*num_alunos * sizeof(struct Aluno));
+void test1 () {
+	printf("Test 1 ...");
+	int num_alunos = 3;
+	struct Aluno * alunos = malloc(num_alunos * sizeof(struct Aluno));
 	alunos[0] = gerarAluno("Roberto", 5.6, 4.2);
 	alunos[1] = gerarAluno("Erick", 5.2, 4.8);
 	alunos[2] = gerarAluno("Henrique", 3.2, 8.8);
 	classificarAlunos(alunos);
-	return alunos;
-}
-
-void test1 () {
-	int num_alunos;
-	struct Aluno *alunos = criarAlunos(&num_alunos);
 	assert(alunos[0].classificacao == 2);
 	assert(alunos[1].classificacao == 3);
 	assert(alunos[2].classificacao == 1);
+	printf("OK\n");
 }
 
 void automated_tests () {
+	printf("Stating Automated Tests\n");
 	test1();
+	printf("End of Automated Tests\n");
 }
 
 void main () {
